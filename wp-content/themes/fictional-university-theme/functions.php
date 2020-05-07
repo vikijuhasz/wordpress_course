@@ -22,6 +22,12 @@ add_action('after_setup_theme', 'university_features');
 
 function unversity_adjust_queries($query)
 {
+    if (!is_admin() && is_post_type_archive('program') && $query->is_main_query()) {
+        $query->set('posts_per_page', -1);
+        $query->set('orderby', 'title');
+        $query->set('order', 'ASC');
+    }    
+    
     $today = date('Ymd');
     if (!is_admin() && is_post_type_archive('event') && $query->is_main_query()) {
         $query->set('meta_key', 'event_date');
@@ -35,7 +41,7 @@ function unversity_adjust_queries($query)
               'type' => 'numeric'
             ]
           ]);
-    }    
+    }
 }
 
 add_action('pre_get_posts', 'unversity_adjust_queries');
