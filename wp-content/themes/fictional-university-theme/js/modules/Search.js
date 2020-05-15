@@ -49,8 +49,9 @@ class Search
     
     getResults()
     {
-        this.resultsDiv.html("Search results HERE");
-        this.isSpinnerVisible = false;
+        $.getJSON('http://localhost/wordpress/wp-json/wp/v2/posts?search=' + this.searchField.val(), function(posts) {
+            alert(posts[0].title.rendered)
+        })
     }
     
     
