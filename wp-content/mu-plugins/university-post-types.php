@@ -4,6 +4,8 @@ function university_post_types()
 {
     // Campus Post Type
     register_post_type('campus', [
+        'capability_type' => 'campus',
+        'map_meta_cap' => true,
         'supports' => ['title', 'editor', 'excerpt'],
         'rewrite' => ['slug' => 'campuses'],
         'has_archive' => true,
@@ -20,6 +22,8 @@ function university_post_types()
     
     // Event Post Type
     register_post_type('event', [
+        'capability_type' => 'event',
+        'map_meta_cap' => true,
         'supports' => ['title', 'editor', 'excerpt'],
         'rewrite' => ['slug' => 'events'],
         'has_archive' => true,
