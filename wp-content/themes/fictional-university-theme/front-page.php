@@ -84,34 +84,29 @@
   </div>
 
   <div class="hero-slider">
-  <div class="hero-slider__slide" style="background-image: url(<?php echo get_theme_file_uri('images/bus.jpg')?>;">
-    <div class="hero-slider__interior container">
-      <div class="hero-slider__overlay">
-        <h2 class="headline headline--medium t-center">Free Transportation</h2>
-        <p class="t-center">All students have free unlimited bus fare.</p>
-        <p class="t-center no-margin"><a href="#" class="btn btn--blue">Learn more</a></p>
+
+  <?php 
+    $slides = new WP_Query([
+      'post_type' => 'slide',
+
+    ]);
+    
+    while ($slides->have_posts()){
+      $slides->the_post(); 
+      ?>
+      
+      <div class="hero-slider__slide" style="background-image: url(<?php echo get_theme_file_uri(get_field('slide_photo')); ?>)">
+        <div class="hero-slider__interior container">
+          <div class="hero-slider__overlay">
+            <h2 class="headline headline--medium t-center"><?php the_title(); ?></h2>
+            <p class="t-center"><?php echo get_field('slide_subtitle'); ?></p>
+            <p class="t-center no-margin"><a href="<?php echo site_url(); ?>" class="btn btn--blue"><?php echo get_field('slide_link_text');?></a></p>
+          </div>
+        </div>
       </div>
+    <?php } ?>
+
     </div>
-  </div>
-  <div class="hero-slider__slide" style="background-image: url(<?php echo get_theme_file_uri('images/apples.jpg') ?>;">
-    <div class="hero-slider__interior container">
-      <div class="hero-slider__overlay">
-        <h2 class="headline headline--medium t-center">An Apple a Day</h2>
-        <p class="t-center">Our dentistry program recommends eating apples.</p>
-        <p class="t-center no-margin"><a href="#" class="btn btn--blue">Learn more</a></p>
-      </div>
-    </div>
-  </div>
-  <div class="hero-slider__slide" style="background-image: url(<?php echo get_theme_file_uri('images/bread.jpg')?>;">
-    <div class="hero-slider__interior container">
-      <div class="hero-slider__overlay">
-        <h2 class="headline headline--medium t-center">Free Food</h2>
-        <p class="t-center">Fictional University offers lunch plans for those in need.</p>
-        <p class="t-center no-margin"><a href="#" class="btn btn--blue">Learn more</a></p>
-      </div>
-    </div>
-  </div>
-</div>
 
  <?php get_footer(); ?>
 
