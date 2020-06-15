@@ -49,7 +49,21 @@
     <?php } ?>
 
     <div class="generic-content">
-      <?php the_content(); ?>
+      <?php
+        the_content();
+        
+        $skyColorValue = sanitize_text_field(get_query_var('skyColor'));
+        $grassColorValue = sanitize_text_field(get_query_var('grassColor'));
+
+        if($skyColorValue == 'blue' && $grassColorValue == 'green') {
+          echo '<p>The sky is blue and the grass is green. Life is good.</p>';
+        }      
+      ?>
+      <form>
+        <input type="text" placeholder="Sky color" name="skyColor">
+        <input type="text" placeholder="Grass color" name="grassColor">
+        <button>Submit</button>
+      </form>
     </div>
 
   </div>
