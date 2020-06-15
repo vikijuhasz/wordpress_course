@@ -29,6 +29,7 @@
     "webpack-cli": "^3.3.6"
   },
   "dependencies": {
+    "@wordpress/element": "^2.14.0",
     "jquery": "^3.4.1",
     "normalize.css": "^8.0.1",
     "slick-carousel": "^1.8.1"
